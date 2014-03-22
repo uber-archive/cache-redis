@@ -13,3 +13,5 @@ notifications:
       - d.f.ellis@ieee.org
     on_success: change
     on_failure: change
+
+services: redis
