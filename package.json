@@ -12,7 +12,7 @@
     "email": "d.f.ellis@ieee.org"
   },
   "dependencies": {
-    "redis-manager": "*"
+    "redis-manager": "git+ssh://gitolite@code.uber.internal:github/uber/redis-manager#baca518f2248535318304f75892a59e5fab0e688"
   },
   "devDependencies": {
     "tape": "~2.10.2",
