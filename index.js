@@ -9,7 +9,8 @@ function CacheRedis(config) {
     this.redisConfig = config.redisConfig || {};
     this.namespace = config.namespace;
     this.lazy = config.lazy || false;
-    this.redisClient = redisManager.getClient(this.port, this.host, this.redisConfig);
+    this.redisManager = config.redisManager || redisManager;
+    this.redisClient = this.redisManager.getClient(this.port, this.host, this.redisConfig);
     this.redisClient.on('error', this.emit.bind(this, 'error'));
     this.cache = {};
 
@@ -35,7 +36,7 @@ function CacheRedis(config) {
 util.inherits(CacheRedis, EventEmitter);
 
 CacheRedis.prototype.close = function() {
-    redisManager.freeClient(this.redisClient);
+    this.redisManager.freeClient(this.redisClient);
 };
 
 CacheRedis.prototype.set = function(key, val, callback) {
